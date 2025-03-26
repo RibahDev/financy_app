@@ -1,4 +1,4 @@
-import 'package:financy_app/features/splash/splash_page.dart';
+import 'package:financy_app/features/onboarding/onboarding_page.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -6,6 +6,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: SplashPage());
+    return MaterialApp(home: OnboardingPage());
   }
 }
