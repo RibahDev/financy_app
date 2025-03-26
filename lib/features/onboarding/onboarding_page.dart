@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:financy_app/common/constants/app_colors.dart';
 import 'package:financy_app/common/constants/app_text_styles.dart';
 import 'package:financy_app/common/widgets/primary_button.dart';
@@ -12,6 +14,7 @@ class OnboardingPage extends StatelessWidget {
       body: Align(
         child: Column(
           children: [
+            const SizedBox(height: 48.0),
             Expanded(flex: 2, child: Image.asset('assets/images/man.png')),
             Text(
               'Spend Smarter',
@@ -32,13 +35,37 @@ class OnboardingPage extends StatelessWidget {
               ),
               child: PrimaryButton(text: 'Get Started', onPressed: () {}),
             ),
-            Text(
-              'Already have account? Log In',
-              style: AppTextStyles.smallText.copyWith(color: AppColors.grey),
-            ),
+            CustomTextButton(),
             const SizedBox(height: 45.0),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CustomTextButton extends StatelessWidget {
+  const CustomTextButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () => log('tap'),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Already have account?',
+            style: AppTextStyles.smallText.copyWith(color: AppColors.grey),
+          ),
+          Text(
+            ' Log In',
+            style: AppTextStyles.smallText.copyWith(
+              color: AppColors.greenlightOne,
+            ),
+          ),
+        ],
       ),
     );
   }
