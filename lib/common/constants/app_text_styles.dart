@@ -27,4 +27,9 @@ class AppTextStyles {
     fontWeight: FontWeight.w500,
     color: Colors.black,
   );
+  static const TextStyle inputLabelText = TextStyle(
+    fontFamily: 'Inter',
+    fontSize: 14.0,
+    fontWeight: FontWeight.w400,
+  );
 }
