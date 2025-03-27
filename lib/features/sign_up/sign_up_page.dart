@@ -27,8 +27,18 @@ class SignUpPage extends StatelessWidget {
             ),
           ),
           Image.asset('assets/images/sign.png'),
-          TextFormField(),
-          TextField(),
+          Form(
+            child: Column(
+              children: [
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'YOUR NAME',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ],
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(
               left: 32.0,
