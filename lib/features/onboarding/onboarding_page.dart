@@ -12,52 +12,47 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Align(
-        child: Column(
-          children: [
-            const SizedBox(height: 48.0),
-            Expanded(flex: 2, child: Image.asset('assets/images/man.png')),
-            Text(
-              'Spend Smarter',
-              style: AppTextStyles.mediumText.copyWith(
-                color: AppColors.greenlightTwo,
-              ),
+      body: Column(
+        children: [
+          Expanded(child: Image.asset('assets/images/man.png')),
+          Text(
+            'Spend Smarter',
+            style: AppTextStyles.mediumText.copyWith(
+              color: AppColors.greenlightTwo,
             ),
-            Text(
-              'Save More',
-              style: AppTextStyles.mediumText.copyWith(
-                color: AppColors.greenlightTwo,
-              ),
+          ),
+          Text(
+            'Save More',
+            style: AppTextStyles.mediumText.copyWith(
+              color: AppColors.greenlightTwo,
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 32.0,
-                right: 32.0,
-                top: 16.0,
-                bottom: 4.0,
-              ),
-              child: PrimaryButton(text: 'Get Started', onPressed: () {}),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 32.0,
+              right: 32.0,
+              top: 20.0,
+              bottom: 4.0,
             ),
-            MultiTextButton(
-              onPressed: () => log('tap'),
-              children: [
-                Text(
-                  'Already have account?',
-                  style: AppTextStyles.smallText.copyWith(
-                    color: AppColors.grey,
-                  ),
+            child: PrimaryButton(text: 'Get Started', onPressed: () {}),
+          ),
+          MultiTextButton(
+            onPressed: () => log('tap'),
+            children: [
+              Text(
+                'Already have account?',
+                style: AppTextStyles.smallText.copyWith(color: AppColors.grey),
+              ),
+              Text(
+                ' Log In',
+                style: AppTextStyles.smallText.copyWith(
+                  color: AppColors.greenlightOne,
                 ),
-                Text(
-                  ' Log In',
-                  style: AppTextStyles.smallText.copyWith(
-                    color: AppColors.greenlightOne,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 45.0),
-          ],
-        ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 45.0),
+        ],
       ),
     );
   }
