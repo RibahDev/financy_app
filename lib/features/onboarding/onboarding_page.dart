@@ -17,15 +17,11 @@ class OnboardingPage extends StatelessWidget {
           Expanded(child: Image.asset('assets/images/man.png')),
           Text(
             'Spend Smarter',
-            style: AppTextStyles.mediumText.copyWith(
-              color: AppColors.greenlightTwo,
-            ),
+            style: AppTextStyles.mediumText.copyWith(color: AppColors.greenTwo),
           ),
           Text(
             'Save More',
-            style: AppTextStyles.mediumText.copyWith(
-              color: AppColors.greenlightTwo,
-            ),
+            style: AppTextStyles.mediumText.copyWith(color: AppColors.greenTwo),
           ),
           Padding(
             padding: const EdgeInsets.only(
@@ -46,7 +42,7 @@ class OnboardingPage extends StatelessWidget {
               Text(
                 ' Log In',
                 style: AppTextStyles.smallText.copyWith(
-                  color: AppColors.greenlightOne,
+                  color: AppColors.greenOne,
                 ),
               ),
             ],
