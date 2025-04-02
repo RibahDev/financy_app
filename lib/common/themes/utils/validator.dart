@@ -4,10 +4,10 @@ class Validator {
     final condition = RegExp(r"((\ *)[\wáéíóúñ]+(\ *)+)+");
 
     if (value != null && value.isEmpty) {
-      return "Esse campo não pode ser vazio!";
+      return "This field cannot be empty!";
     }
     if (value != null && !condition.hasMatch(value)) {
-      return "Nome inválido! Digite um nome válido.";
+      return "Invalid name! Please enter a valid name.";
     }
     return null;
   }
@@ -16,10 +16,10 @@ class Validator {
     final condition = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
 
     if (value != null && value.isEmpty) {
-      return "Esse campo não pode ser vazio!";
+      return "This field cannot be empty!";
     }
     if (value != null && !condition.hasMatch(value)) {
-      return "E-mail inválido! Digite um e-mail válido.";
+      return "Invalid email! Please enter a valid email.";
     }
     return null;
   }
@@ -30,17 +30,17 @@ class Validator {
     );
 
     if (value != null && value.isEmpty) {
-      return "Esse campo não pode ser vazio!";
+      return "This field cannot be empty!";
     }
     if (value != null && !condition.hasMatch(value)) {
-      return "Senha inválido! Digite uma senha válido.";
+      return "Invalid password! Please enter a valid password.";
     }
     return null;
   }
 
   static String? validateConfirmPassword(String? first, String? second) {
     if (first != second) {
-      return "As senhas são diferentes. Por favor, verifique as senhas.";
+      return "The passwords are different. Please check the passwords.";
     }
     return null;
   }
