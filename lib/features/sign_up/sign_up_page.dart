@@ -9,8 +9,15 @@ import 'package:financy_app/common/widgets/password_form_field.dart';
 import 'package:financy_app/common/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,27 +27,58 @@ class SignUpPage extends StatelessWidget {
           Text(
             'Spend Smarter',
             style: AppTextStyles.mediumText.copyWith(color: AppColors.greenTwo),
+            textAlign: TextAlign.center,
           ),
           Text(
             'Save More',
             style: AppTextStyles.mediumText.copyWith(color: AppColors.greenTwo),
+            textAlign: TextAlign.center,
           ),
           Image.asset('assets/images/sign.png'),
           Form(
+            key: _formKey,
             child: Column(
               children: [
                 CustomTextFormField(
                   labelText: 'your name',
-                  hintText: 'John Doe',
+                  hintText: 'JOHN DOE',
                   inputFormatters: [UppercaseTextFormatter()],
+                  validator: (value) {
+                    if (value != null && value.isEmpty) {
+                      return "Esse campo não pode ser vazio!";
+                    }
+                    return null;
+                  },
+                ),
+                CustomTextFormField(
+                  labelText: 'your email',
+                  hintText: 'john@email.com',
+                  validator: (value) {
+                    if (value != null && value.isEmpty) {
+                      return "Esse campo não pode ser vazio!";
+                    }
+                    return null;
+                  },
                 ),
                 PasswordFormField(
                   labelText: 'choose your password',
                   hintText: "********",
+                  validator: (value) {
+                    if (value != null && value.isEmpty) {
+                      return "Esse campo não pode ser vazio!";
+                    }
+                    return null;
+                  },
                 ),
                 PasswordFormField(
                   labelText: 'confirm your password',
                   hintText: "********",
+                  validator: (value) {
+                    if (value != null && value.isEmpty) {
+                      return "Esse campo não pode ser vazio!";
+                    }
+                    return null;
+                  },
                 ),
               ],
             ),
@@ -52,7 +90,19 @@ class SignUpPage extends StatelessWidget {
               top: 20.0,
               bottom: 4.0,
             ),
-            child: PrimaryButton(text: 'Sign Up', onPressed: () => log('btn')),
+            child: PrimaryButton(
+              text: 'Sign Up',
+              onPressed: () {
+                final valid =
+                    _formKey.currentState != null &&
+                    _formKey.currentState!.validate();
+                if (valid) {
+                  log("Continuar lógica de login");
+                } else {
+                  log('Erro ao logar');
+                }
+              },
+            ),
           ),
           MultiTextButton(
             onPressed: () => log('tap'),
