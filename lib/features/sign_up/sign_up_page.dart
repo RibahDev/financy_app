@@ -69,6 +69,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     }
                     return null;
                   },
+                  helperText:
+                      "Must have at least 8 characters, 1 capital letter and 1 number.",
                 ),
                 PasswordFormField(
                   labelText: 'confirm your password',
