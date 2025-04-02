@@ -8,6 +8,8 @@ import 'package:financy_app/common/widgets/custom_text_form_field.dart';
 import 'package:financy_app/common/widgets/multi_text_button.dart';
 import 'package:financy_app/common/widgets/password_form_field.dart';
 import 'package:financy_app/common/widgets/primary_button.dart';
+import 'package:financy_app/features/sign_up/sign_up_controller.dart';
+import 'package:financy_app/features/sign_up/sign_up_state.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -20,6 +22,47 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
   final _passwordController = TextEditingController();
+  final _controller = SignUpController();
+
+  @override
+  void dispose() {
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      //is é uma verificação do tipo bool "se ele for isso"
+      if (_controller.state is SignUpLoadingState) {
+        showDialog(
+          context: context,
+          builder: (context) => Center(child: CircularProgressIndicator()),
+        );
+      }
+      if (_controller.state is SignUpSuccessState) {
+        Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder:
+                (context) => Scaffold(body: Center(child: Text('Nova Tela!'))),
+          ),
+        );
+      }
+
+      if (_controller.state is SignUpErrorState) {
+        Navigator.pop(context);
+        showDialog(
+          context: context,
+          builder:
+              (context) =>
+                  const SizedBox(height: 150.0, child: Text("Erro ao logar")),
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +129,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     _formKey.currentState != null &&
                     _formKey.currentState!.validate();
                 if (valid) {
-                  log("Continuar lógica de login");
+                  _controller.doSignUp();
                 } else {
                   log('Erro ao logar');
                 }
