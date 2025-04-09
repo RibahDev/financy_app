@@ -16,7 +16,7 @@ class SignUpController extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future signUp({
+  Future<void> signUp({
     required String? name,
     required String email,
     required String password,
@@ -30,7 +30,7 @@ class SignUpController extends ChangeNotifier {
       //Atualiza novamente  uma variável
       _changeState(SignUpSuccessState());
     } catch (e) {
-      _changeState(SignUpErrorState(message: ''));
+      _changeState(SignUpErrorState(message: e.toString()));
     }
   }
 }

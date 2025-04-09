@@ -3,8 +3,12 @@ import 'package:financy_app/common/constants/app_text_styles.dart';
 import 'package:financy_app/common/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
-Future<void> customModalBottomSheet(BuildContext context) {
-  return showModalBottomSheet<void>(
+Future<bool?> customModalBottomSheet(
+  BuildContext context, {
+  required String content,
+  String? buttonText,
+}) {
+  return showModalBottomSheet(
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(38),
@@ -12,6 +16,7 @@ Future<void> customModalBottomSheet(BuildContext context) {
       ),
     ),
     context: context,
+
     builder: (BuildContext context) {
       return Container(
         decoration: BoxDecoration(
@@ -28,16 +33,16 @@ Future<void> customModalBottomSheet(BuildContext context) {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text(
-                'Ops, algo deu errado!',
+                content,
+                textAlign: TextAlign.center,
                 style: AppTextStyles.mediumText20.copyWith(
                   color: AppColors.greenTwo,
                 ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 42.0, vertical: 16),
-
                 child: PrimaryButton(
-                  text: "Tentar Novamente",
+                  text: buttonText!,
                   onPressed: () => Navigator.pop(context),
                 ),
               ),

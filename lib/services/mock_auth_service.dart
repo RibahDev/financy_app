@@ -4,7 +4,6 @@ import 'package:financy_app/services/auth_service.dart';
 class MockAuthService implements AuthService {
   @override
   Future signIn() {
-    // TODO: implement signIn
     throw UnimplementedError();
   }
 
@@ -22,7 +21,7 @@ class MockAuthService implements AuthService {
       return UserModel(id: email.hashCode, name: name, email: email);
     } catch (e) {
       if (password.startsWith("123")) {
-        throw "Sena insegura. Digite uma senha mais forte!";
+        throw "Senha insegura. Digite uma senha mais forte!";
       }
       throw "Não foi possível criar sua conta. Tente novamente mais tarde.";
     }

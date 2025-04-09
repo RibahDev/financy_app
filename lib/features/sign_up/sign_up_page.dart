@@ -62,7 +62,11 @@ class _SignUpPageState extends State<SignUpPage> {
       if (_controller.state is SignUpErrorState) {
         final error = _controller.state as SignUpErrorState;
         Navigator.pop(context);
-        customModalBottomSheet(context);
+        customModalBottomSheet(
+          context,
+          content: error.message,
+          buttonText: "Tentar novamente",
+        );
       }
     });
   }
