@@ -7,7 +7,7 @@ class SignUpController extends ChangeNotifier {
 
   SignUpController(this._service);
 
-  SignUpState _state = SignUpInitialState();
+  SignUpState _state = SignUpStateInitial();
 
   SignUpState get state => _state;
 
@@ -22,15 +22,15 @@ class SignUpController extends ChangeNotifier {
     required String password,
   }) async {
     //Atualiza uma variável
-    _changeState(SignUpLoadingState());
+    _changeState(SignUpStateLoading());
 
     try {
       await _service.signUp(name: name, email: email, password: password);
 
       //Atualiza novamente  uma variável
-      _changeState(SignUpSuccessState());
+      _changeState(SignUpStateSuccess());
     } catch (e) {
-      _changeState(SignUpErrorState(message: e.toString()));
+      _changeState(SignUpStateError(message: e.toString()));
     }
   }
 }

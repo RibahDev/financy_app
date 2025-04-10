@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void navigateToOnBoarding() {
-    Navigator.pushReplacementNamed(context, NamedRoutes.initial);
+    Navigator.pushReplacementNamed(context, NamedRoute.initial);
   }
 
   @override

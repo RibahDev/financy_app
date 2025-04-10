@@ -1,5 +1,6 @@
 import 'package:financy_app/common/constants/routes.dart';
 import 'package:financy_app/features/onboarding/onboarding_page.dart';
+import 'package:financy_app/features/sign_in/sign_in_page.dart';
 import 'package:financy_app/features/sign_up/sign_up_page.dart';
 import 'package:financy_app/features/splash/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -10,12 +11,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: NamedRoutes.splash,
+      initialRoute: NamedRoute.splash,
       routes: {
-        NamedRoutes.initial: (context) => OnboardingPage(),
-        NamedRoutes.splash: (context) => SplashPage(),
-        NamedRoutes.signUp: (context) => SignUpPage(),
-        // NamedRoutes.signIn: (context) => SignInPage(),
+        NamedRoute.initial: (context) => OnboardingPage(),
+        NamedRoute.splash: (context) => SplashPage(),
+        NamedRoute.signUp: (context) => SignUpPage(),
+        NamedRoute.signIn: (context) => SignInPage(),
       },
     );
   }
