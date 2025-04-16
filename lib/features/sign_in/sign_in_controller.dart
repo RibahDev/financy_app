@@ -25,11 +25,9 @@ class SignInController extends ChangeNotifier {
       final user = await _service.signIn(email: email, password: password);
 
       if (user.id != null) {
-        secureStorage.write(key: "CURRENT_USER");
+        secureStorage.write(key: "CURRENT_USER", value: user.toJson());
         _changeState(SignInStateSuccess());
-      } else {
-        _changeState(SignInStateError());
-      }
+      } else {}
 
       //Atualiza novamente  uma variável
       _changeState(SignInStateSuccess());
