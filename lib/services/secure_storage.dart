@@ -6,7 +6,9 @@ class SecureStorage {
 
   final _secureStorage = const FlutterSecureStorage();
 
-  Future<void> write({required String key, required String value}) async {}
+  Future<void> write({required String key, required String value}) async {
+    await _secureStorage.write(key: key, value: value);
+  }
 
   Future<String?> readOne({required String key}) async {
     return await _secureStorage.read(key: key);

@@ -1,3 +1,5 @@
+import 'package:financy_app/common/constants/routes.dart';
+import 'package:financy_app/services/secure_storage.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -8,8 +10,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _secureStorage = SecureStorage();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Nova Tela!')));
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Nova Tela!'),
+            ElevatedButton(
+              onPressed: () {
+                // ao concluir _secureStorage.deleteOne(key: "CURRENT_USER") então ele faz a função "No caso, Navigator"
+                _secureStorage.deleteOne(key: "CURRENT_USER").then((_) => null);
+                Navigator.popAndPushNamed(context, NamedRoute.initial);
+              },
+              child: const Text("Logout"),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
